@@ -230,6 +230,11 @@ class MadMimi {
 		$request = $this->DoRequest($path, $this->default_options(), $return, 'POST', false);
 		return $request;
 	}
+	function IsSuppressed($email, $return = false) {
+		$path = str_replace('%email%', $email, '/audience_members/%email%/is_suppressed');
+		$request = $this->DoRequest($path, $this->default_options(), $return, 'POST', false);
+		return $request;
+	}
 	function AddMembership($list_name, $email, $additional = array(), $return = false) {
 		$options = array('email' => $email) + $additional + $this->default_options();
 		$path = '/audience_lists/' . rawurlencode($list_name) . '/add';
