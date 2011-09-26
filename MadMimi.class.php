@@ -235,6 +235,10 @@ class MadMimi {
 		$request = $this->DoRequest($path, $this->default_options(), $return, 'POST', false);
 		return $request;
 	}
+	function Unsuppress($email, $return = false) {
+		$csv_data = "email,opt_out\n{$email},0";
+		return $this->Import($csv_data, $return);
+	}
 	function AddMembership($list_name, $email, $additional = array(), $return = false) {
 		$options = array('email' => $email) + $additional + $this->default_options();
 		$path = '/audience_lists/' . rawurlencode($list_name) . '/add';
