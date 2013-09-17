@@ -6,6 +6,6 @@
     "license": ["MIT"],
     "version": "2.0.1",
     "autoload": {
-            "files": ["MadMimi.class.php"]
+            "classmap": ["MadMimi.class.php"]
     }
 }
