@@ -1,0 +1,11 @@
+{
+    "name": "hasandz/madmimi-php",
+    "description": "a short, sweet PHP class for the MadMimi API",
+    "homepage": "https://github.com/madmimi/madmimi-php",
+    "type": "library",
+    "license": ["MIT"],
+    "version": "2.0.1",
+    "autoload": {
+            "classmap": ["MadMimi.class.php"]
+    }
+}

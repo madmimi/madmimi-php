@@ -1,5 +1,15 @@
 # MadMimi for PHP
 
+### Install with Composer
+
+Simply add a dependency on `hasandz/madmimi-php` to your project's `composer.json` file if you use [Composer](http://getcomposer.org/) to manage the dependencies of your project. Here is a minimal example of a `composer.json` file that just defines a dependency:
+
+    {
+        "require": {
+            "hasandz/madmimi-php": "dev-master"
+        }
+    }
+
 ## Notes on basic usage:
 $mimi = new MadMimi('username', 'api_key');
 
