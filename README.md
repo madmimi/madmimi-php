@@ -1,5 +1,8 @@
 # MadMimi for PHP
-
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/urakozz/madmimi-php/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/urakozz/madmimi-php/?branch=master)
+[![Latest Stable Version](https://poser.pugx.org/kozz/madmimi-php/v/stable.svg)](https://packagist.org/packages/kozz/madmimi-php)
+[![Latest Unstable Version](https://poser.pugx.org/kozz/madmimi-php/v/unstable.svg)](https://packagist.org/packages/kozz/madmimi-php)
+[![License](http://img.shields.io/packagist/l/kozz/madmimi-php.svg)](https://packagist.org/packages/kozz/madmimi-php)
 ## Notes on basic usage:
 $mimi = new MadMimi('username', 'api_key');
 

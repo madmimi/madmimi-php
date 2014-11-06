@@ -1,0 +1,11 @@
+{
+    "name": "kozz/madmimi-php",
+    "keywords": ["Madmimi", "EMail","Mail"],
+    "description": "Actual fork of Official PHP MadMimi API for Composer",
+    "homepage": "https://github.com/urakozz/madmimi-php",
+    "type": "library",
+    "license": ["MIT"],
+    "autoload": {
+            "classmap": ["MadMimi.class.php"]
+    }
+}
