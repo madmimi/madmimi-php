@@ -118,6 +118,26 @@ class MadMimi {
 		$csv .= "\n";
 		return $csv;
 	}
+	function build_csv_multi($arr){
+	$csv = "";
+		$keys = array_keys($arr['0']);
+		foreach ($keys as $key => $value) {
+			$value = $this->escape_for_csv($value);
+			$csv .= $value . ",";
+		}
+		$csv = substr($csv, 0, -1);
+		$csv .= "\n";
+		
+		foreach ($arr as $member){
+			foreach ($member as $key => $value) {
+				$value = $this->escape_for_csv($value);			
+				$csv .= $value . ",";
+			}
+		$csv = substr($csv, 0, -1);
+		$csv .= "\n";			
+		}
+		return $csv;
+	}
 	function Import($csv_data, $return = false) {
 		$options = array('csv_file' => $csv_data) + $this->default_options();
 		$request = $this->DoRequest('/audience_members', $options, $return, 'POST');
@@ -127,9 +147,18 @@ class MadMimi {
 		$request = $this->DoRequest('/audience_lists/lists.xml', $this->default_options(), $return);
 		return $request;
 	}
+	function UpdatePermission($email, $full = '', $read = '', $none = '', $return = false) {
+		$options = array('email' => $email, 'full' => $full, 'read' => $read, 'none' => $none ) + $this->default_options();
+		$request = $this->DoRequest('/participants/update_permissions_for', $options, $return, 'POST');
+		return $request;
+	}
 	function AddUser($user, $return = false) {
 		$csv = $this->build_csv($user);
 		return $this->Import($csv, $return);
+	}
+	function AddMultiUser($user, $return = false) {
+		$csv = $this->build_csv_multi($user);
+		$this->Import($csv, $return);
 	}
 	function RemoveUser($email, $list_name, $return = false) {
 		$options = array('email' => $email) + $this->default_options();
