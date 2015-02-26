@@ -67,13 +67,17 @@ class MadMimi {
 			case 'GET':
 				break;
 			case 'POST':
+			case 'PUT':
 				curl_setopt($ch, CURLOPT_POST, TRUE);
 				curl_setopt($ch, CURLOPT_POSTFIELDS, $request_options);
 				break;
 		}
+		if ($method == 'PUT') {
+			curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'PUT');
+		}
 		if ($this->debug == true) {
 			echo "URL: {$url}<br />";
-			if ($method == 'POST') {
+			if ($method == 'POST' || $method == 'PUT') {
 				echo "Request Options: {$request_options}";
 			}
 		} else {
@@ -241,6 +245,12 @@ class MadMimi {
 		$options = array('email' => $email) + $this->default_options();
 		$path = '/audience_lists/' . rawurlencode($list_name) . '/remove';
 		$request = $this->DoRequest($path, $options, $return, 'POST');
+		return $request;
+	}
+	function AudienceUpdate($email, $additional = array(), $return = false) {
+		$path = str_replace('%email%', rawurlencode($email), '/audience_members/%email%');
+		$options = array( 'audience_member' => $additional ) + $this->default_options();
+		$request = $this->DoRequest($path, $options, $return, 'PUT');
 		return $request;
 	}
 }
